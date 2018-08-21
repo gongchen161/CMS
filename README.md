@@ -12,6 +12,10 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+  1. The default database management system used is mysql
+  2. The default databases that need to be created are "cms_development" and "cms_test"
+  3. Make sure to "GRANT ALL PRIVILEGES" of the above databases to your users
+  4. Change the username and password accordingly in "config/database.yml"
 
 * Database initialization
 
