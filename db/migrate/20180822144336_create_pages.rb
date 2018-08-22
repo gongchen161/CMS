@@ -1,5 +1,5 @@
 class CreatePages < ActiveRecord::Migration[5.2]
-  def change
+  def up
     create_table :pages do |t|
  	  t.integer "subject_id"
  	  t.string "name"
@@ -17,5 +17,5 @@ class CreatePages < ActiveRecord::Migration[5.2]
    def down
     drop_table :pages
   end
-  
+
 end

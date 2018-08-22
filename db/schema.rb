@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_144351) do
+ActiveRecord::Schema.define(version: 2018_08_22_150436) do
+
+  create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "username", limit: 25
+    t.string "password_digest", limit: 40
+    t.string "first_name", limit: 50
+    t.string "last_name", limit: 50
+    t.string "email", limit: 100, default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_admin_users_on_username"
+  end
 
   create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "subject_id"
