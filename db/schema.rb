@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_150436) do
+ActiveRecord::Schema.define(version: 2018_08_22_175141) do
 
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", limit: 25
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 2018_08_22_150436) do
     t.index ["username"], name: "index_admin_users_on_username"
   end
 
+  create_table "admin_users_pages", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "admin_user_id"
+    t.integer "page_id"
+    t.index ["admin_user_id", "page_id"], name: "index_admin_users_pages_on_admin_user_id_and_page_id"
+  end
+
   create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "subject_id"
     t.string "name"
@@ -33,6 +39,15 @@ ActiveRecord::Schema.define(version: 2018_08_22_150436) do
     t.datetime "updated_at", null: false
     t.index ["permalink"], name: "index_pages_on_permalink"
     t.index ["subject_id"], name: "index_pages_on_subject_id"
+  end
+
+  create_table "section_edits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "admin_user_id"
+    t.integer "section_id"
+    t.string "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id", "section_id"], name: "index_section_edits_on_admin_user_id_and_section_id"
   end
 
   create_table "sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
