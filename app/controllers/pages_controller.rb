@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new(:subject_id => @subject.id)
-    @page_count = Page.count + 1
+    @page_count = @subject.pages.count + 1
     @subjects = Subject.sorted
   end
 
@@ -25,7 +25,7 @@ class PagesController < ApplicationController
       flash[:notice] = "Page created successfully."
       redirect_to(pages_path(:subject_id => @subject.id))
     else
-      @page_count = Page.count + 1
+      @page_count = @subject.pages.count + 1
       @subjects = Subject.sorted
       render('new')
     end
@@ -33,7 +33,7 @@ class PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
-    @page_count = Page.count
+    @page_count = @subject.pages.count
     @subjects = Subject.sorted
   end
 
@@ -43,7 +43,7 @@ class PagesController < ApplicationController
       flash[:notice] = "Page updated successfully."
       redirect_to(page_path(@page, :subject_id => @subject.id))
     else
-      @page_count = Page.count
+      @page_count = @subject.pages.count
       @subjects = Subject.sorted
       render('edit')
     end
@@ -67,7 +67,7 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:name, :position, :visible, :permalink)
+    params.require(:page).permit(:subject_id, :name, :position, :visible, :permalink)
   end
 
 end
