@@ -1,10 +1,10 @@
 <% @page_title = "Delete Sections" %>
-<%= link_to("<< Back to List", sections_path, :class => 'back-link') %>
+<%= link_to("<< Back to List", sections_path(:page_id => @page.id), :class => 'back-link') %>
 
 <div class="sections delete">
   <h2>Delete Section</h2>
 
-  <%= form_for(@section, :method => 'delete') do |f| %>
+  <%= form_for(@section, :url => section_path(@section, :page_id => @page.id), :method => 'delete') do |f| %>
 
     <p>Delete this section?</p>
 
