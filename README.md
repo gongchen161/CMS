@@ -10,12 +10,7 @@
   1. run `rails db:migrate` to generate all the necessary tables;
 
 * How to run the application
-  1. To view the page content
-    a. run `rails server` to start the server
-    b. Go to `localhost:3000`(default destination) to launch the home page
-  2. To manage the pages
-    a. create an admin user in mysql admin_user table
-    b. Go to `localhost:3000\admin`(default destination) to log in 
-    c. Edit, Update and view the pages/sections using the links
+  1. To view the page content, run `rails server` to start the server and then go to `localhost:3000`(default destination) to       launch the home page
+  2.To manage the pagescreate an admin user in mysql admin_user table, go to `localhost:3000\admin`(default destination) to       log in and then Edit, Update and view the pages/sections links will be available
   
   
